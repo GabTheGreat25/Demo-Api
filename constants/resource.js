@@ -4,8 +4,6 @@ module.exports = {
   USER: "user",
   PRODUCT: "product",
   TRANSACTION: "transaction",
-  COMMENT: "comment",
-  DELIVERY: "delivery",
   IMAGES: "images",
   IMAGE: "image",
   PRODUCTION: "production",

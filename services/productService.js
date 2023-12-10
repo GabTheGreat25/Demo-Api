@@ -96,7 +96,7 @@ exports.updateProductData = async (req, res, id) => {
     throw new ErrorHandler(`Product not found with ID: ${id}`);
 
   const duplicateProduct = await Product.findOne({
-    name: req.body.product_name,
+    product_name: { $regex: new RegExp(`^${req.body.product_name}$`, "i") },
     _id: {
       $ne: id,
     },

@@ -151,7 +151,7 @@ exports.updateUserData = async (req, res, id) => {
   if (!existingUser) throw new ErrorHandler(`User not found with ID: ${id}`);
 
   const duplicateUser = await User.findOne({
-    name: req.body.name,
+    name: { $regex: new RegExp(`^${req.body.name}$`, "i") },
     _id: { $ne: id },
   })
     .collation({ locale: "en" })
