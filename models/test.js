@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { RESOURCE } = require("../constants/index");
 
-const userSchema = new mongoose.Schema({
+const testSchema = new mongoose.Schema({
   test: {
     type: String,
     required: [true, "Test is required"],
@@ -24,4 +24,4 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model(RESOURCE.TEST, userSchema);
+module.exports = mongoose.model(RESOURCE.TEST, testSchema);

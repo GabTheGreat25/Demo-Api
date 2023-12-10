@@ -13,8 +13,10 @@ exports.getAllTests = asyncHandler(async (req, res, next) => {
     ? next(new ErrorHandler("No tests found"))
     : SuccessHandler(
         res,
-        `Tests with test ${tests.map((p) => p?.test).join(", ")} and IDs ${tests
-          .map((p) => p?._id)
+        `Tests with test ${tests
+          .map((test) => test?.test)
+          .join(", ")} and IDs ${tests
+          .map((test) => test?._id)
           .join(", ")} retrieved`,
         tests
       );

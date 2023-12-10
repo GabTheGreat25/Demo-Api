@@ -2,7 +2,7 @@ const Test = require("../models/test");
 const mongoose = require("mongoose");
 const ErrorHandler = require("../utils/errorHandler");
 const { cloudinary } = require("../utils/cloudinary");
-const { STATUSCODE, RESOURCE } = require("../constants/index");
+const { STATUSCODE } = require("../constants/index");
 
 exports.getAllTestData = async () => {
   const tests = await Test.find()
@@ -79,7 +79,7 @@ exports.updateTestData = async (req, res, id) => {
   if (!existingTest) throw new ErrorHandler(`Test not found with ID: ${id}`);
 
   const duplicateTest = await Test.findOne({
-    name: req.body.test,
+    test: { $regex: new RegExp(`^${req.body.test}$`, "i") },
     _id: {
       $ne: id,
     },
